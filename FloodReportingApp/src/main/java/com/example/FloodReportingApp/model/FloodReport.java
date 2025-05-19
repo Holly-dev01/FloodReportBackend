@@ -15,6 +15,8 @@ public class FloodReport {
     private Date timestamp;
     private String deviceId;
 
+    public FloodReport() {}
+
    public FloodReport(String type, String description, double latitude, double longitude, Date timestamp, String deviceId) {
         this.type = type;
         this.description = description;
