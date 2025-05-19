@@ -18,13 +18,14 @@ public class FloodReport {
 
     public FloodReport() {}
 
-   public FloodReport(String type, String description, double latitude, double longitude, Date timestamp, String deviceId) {
+   public FloodReport(String type, String description, double latitude, double longitude, Date timestamp, String deviceId,String severity) {
         this.type = type;
         this.description = description;
         this.latitude = latitude;
         this.longitude = longitude;
         this.timestamp = timestamp;
         this.deviceId = deviceId ;
+        this.severity = severity ;
     }
 
     public String getId() { return id; }
