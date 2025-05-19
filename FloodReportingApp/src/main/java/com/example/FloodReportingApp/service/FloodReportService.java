@@ -7,6 +7,7 @@ import com.example.FloodReportingApp.model.FloodReport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,9 +21,14 @@ public class FloodReportService {
      return reportRepository.save(report);
      }
 
-    public List<FloodReport> getAllReports() {
-      return reportRepository.findAll();
-    }  
+    public List<FloodReportDTO> getAllReports() {
+      List<FloodReportDTO> reportDTOList = new ArrayList<>();
+      reportRepository.findAll().forEach(report -> {
+        reportDTOList.add(convertToDTO(report));
+      });
+      return reportDTOList;
+    } 
+
     public List<FloodReport> getReportsByDeviceId(String deviceId) {
       return reportRepository.findByDeviceId(deviceId);
     }
