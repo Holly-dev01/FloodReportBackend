@@ -22,4 +22,7 @@ public class FloodReportService {
     public List<FloodReport> getAllReports() {
       return reportRepository.findAll();
     }  
+    public List<FloodReport> getReportsByDeviceId(String deviceId) {
+      return reportRepository.findByDeviceId(deviceId);
+    }
 }
