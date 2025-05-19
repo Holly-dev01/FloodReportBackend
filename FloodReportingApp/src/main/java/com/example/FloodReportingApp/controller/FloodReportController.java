@@ -24,8 +24,8 @@ public class FloodReportController {
    }
 
    @GetMapping
-   public ResponseEntity<List<FloodReport>> getAllReports() {
-     List<FloodReport> reports = reportService.getAllReports();
+   public ResponseEntity<List<FloodReportDTO>> getAllReports() {
+     List<FloodReportDTO> reports = reportService.getAllReports();
      return ResponseEntity.ok(reports);
     }
     
@@ -39,5 +39,5 @@ public class FloodReportController {
   public ResponseEntity<FloodReport> createReport(@RequestBody FloodReportDTO reportDTO) {
     FloodReport report = reportService.createReport(reportDTO);
     return ResponseEntity.ok(report);
-  }
+}
 }
