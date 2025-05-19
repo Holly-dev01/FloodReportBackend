@@ -15,7 +15,7 @@ public class FloodReportDTO {
 
     public FloodReportDTO() {}
 
-    public FloodReportDTO(String id, String type, String description, double latitude, double longitude, Date timestamp, String deviceId) {
+    public FloodReportDTO(String id, String type, String description, double latitude, double longitude, Date timestamp, String deviceId,String severity) {
         this.id = id;
         this.type = type;
         this.description = description;
@@ -23,6 +23,7 @@ public class FloodReportDTO {
         this.longitude = longitude;
         this.timestamp = timestamp;
         this.deviceId = deviceId;
+        this.severity = severity;
     }
 
     public String getId() { return id; }
