@@ -13,13 +13,15 @@ public class FloodReport {
     private double latitude;
     private double longitude;
     private Date timestamp;
+    private String deviceId;
 
-   public FloodReport(String type, String description, double latitude, double longitude, Date timestamp, String deviceId, String severity) {
+   public FloodReport(String type, String description, double latitude, double longitude, Date timestamp, String deviceId) {
         this.type = type;
         this.description = description;
         this.latitude = latitude;
         this.longitude = longitude;
         this.timestamp = timestamp;
+        this.deviceId = deviceId ;
     }
 
     public String getId() { return id; }
@@ -39,5 +41,8 @@ public class FloodReport {
 
     public Date getTimestamp() { return timestamp; }
     public void setTimestamp(Date timestamp) { this.timestamp = timestamp; }
+
+    public String getDeviceId() { return deviceId; }
+    public void setDeviceId(String deviceId) { this.deviceId = deviceId; } 
 
 }
