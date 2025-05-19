@@ -38,4 +38,16 @@ public class FloodReportService {
     
     return reportRepository.save(report);
   }
+
+  private FloodReportDTO convertToDTO(FloodReport report) {
+    FloodReportDTO dto = new FloodReportDTO();
+    dto.setId(report.getId());
+    dto.setType(report.getType());
+    dto.setDescription(report.getDescription());
+    dto.setLatitude(report.getLatitude());
+    dto.setLongitude(report.getLongitude());
+    dto.setTimestamp(report.getTimestamp());
+    dto.setDeviceId(report.getDeviceId());
+    return dto;
+  }
 }
