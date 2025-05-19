@@ -39,5 +39,11 @@ public class FloodReportController {
   public ResponseEntity<FloodReport> createReport(@RequestBody FloodReportDTO reportDTO) {
     FloodReport report = reportService.createReport(reportDTO);
     return ResponseEntity.ok(report);
-}
+  }
+
+  @GetMapping("/type/{type}")
+  public ResponseEntity<List<FloodReportDTO>> getReportsByType(@PathVariable String type) {
+    List<FloodReportDTO> reports = reportService.getReportsByType(type);
+    return ResponseEntity.ok(reports);
+  }
 }
