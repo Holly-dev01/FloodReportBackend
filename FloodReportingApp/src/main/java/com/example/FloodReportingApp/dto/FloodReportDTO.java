@@ -11,6 +11,7 @@ public class FloodReportDTO {
     private double longitude;
     private Date timestamp;
     private String deviceId;
+    private String severity;
 
     public FloodReportDTO() {}
 
@@ -44,5 +45,9 @@ public class FloodReportDTO {
 
     public String getDeviceId() { return deviceId; }
     public void setDeviceId(String deviceId) { this.deviceId = deviceId; }
+   
+    public String getSeverity() { return severity; }
+    public void setSeverity(String severity) { this.severity = severity; }
+
 
 }
