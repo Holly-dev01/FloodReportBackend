@@ -20,9 +20,16 @@ public class FloodReportController {
     FloodReport savedReport = reportService.createReport(report);
     return ResponseEntity.ok(savedReport);
    }
+
    @GetMapping
    public ResponseEntity<List<FloodReport>> getAllReports() {
      List<FloodReport> reports = reportService.getAllReports();
      return ResponseEntity.ok(reports);
     }
+    
+   @GetMapping("/device/{deviceId}")
+   public ResponseEntity<List<FloodReport>> getReportsByDeviceId(@PathVariable String deviceId) {
+     List<FloodReport> reports = reportService.getReportsByDeviceId(deviceId);
+     return ResponseEntity.ok(reports);
+   }
 }
