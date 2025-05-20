@@ -46,4 +46,10 @@ public class FloodReportController {
     List<FloodReportDTO> reports = reportService.getReportsByType(type);
     return ResponseEntity.ok(reports);
   }
+
+  @GetMapping("/severity/{severity}")
+  public ResponseEntity<List<FloodReportDTO>> getReportsBySeverity(@PathVariable String severity) {
+    List<FloodReportDTO> reports = reportService.getReportsBySeverity(severity);
+    return ResponseEntity.ok(reports);
+  }
 }
