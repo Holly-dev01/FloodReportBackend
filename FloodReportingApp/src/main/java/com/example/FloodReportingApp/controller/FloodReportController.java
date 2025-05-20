@@ -25,11 +25,11 @@ public class FloodReportController {
     /**
      * Créer un nouveau rapport.
      */
-  @PostMapping
-  public ResponseEntity<FloodReport> createReport(@RequestBody FloodReport report) {
-    FloodReport savedReport = reportService.createReport(report);
-    return ResponseEntity.ok(savedReport);
-   }
+   @PostMapping
+    public ResponseEntity<FloodReport> createReport(@RequestBody FloodReportDTO reportDTO) {
+        FloodReport report = reportService.createReport(reportDTO);
+        return ResponseEntity.ok(report);
+    }
 
     /**
      * Récupérer tous les rapports.
