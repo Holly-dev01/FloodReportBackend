@@ -50,6 +50,7 @@ public class FloodReportService {
     report.setLongitude(reportDTO.getLongitude());
     report.setTimestamp(new Date());
     report.setDeviceId(reportDTO.getDeviceId());
+    report.setSeverity(reportDTO.getSeverity());
     
     return reportRepository.save(report);
   }
