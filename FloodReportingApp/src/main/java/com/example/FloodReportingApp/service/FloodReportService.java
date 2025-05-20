@@ -34,6 +34,14 @@ public class FloodReportService {
       return reportRepository.findByDeviceId(deviceId);
     }
 
+    public List<FloodReportDTO> getReportsBySeverity(String severity) {
+      List<FloodReportDTO> reportDTOList = new ArrayList<>();
+      reportRepository.findBySeverity(severity).forEach(report -> {
+        reportDTOList.add(convertToDTO(report));
+      });
+      return reportDTOList;
+    }
+
   public FloodReport createReport(FloodReportDTO reportDTO) {
     FloodReport report = new FloodReport();
     report.setType(reportDTO.getType());
