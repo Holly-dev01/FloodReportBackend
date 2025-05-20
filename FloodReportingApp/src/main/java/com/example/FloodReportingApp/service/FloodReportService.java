@@ -39,6 +39,15 @@ public class FloodReportService {
       return reportDTOList;
     } 
 
+    // Récupérer les rapports par types
+    public List<FloodReportDTO> getReportsByType(String type) {
+      List<FloodReportDTO> reportDTOList = new ArrayList<>();
+      reportRepository.findByType(type).forEach(report -> {
+        reportDTOList.add(convertToDTO(report));
+      });
+      return reportDTOList;
+    }
+
     // Récupérer les rapports par severity
     public List<FloodReportDTO> getReportsBySeverity(String severity) {
       List<FloodReportDTO> reportDTOList = new ArrayList<>();
