@@ -8,7 +8,7 @@ import java.util.Date;
 public class FloodReport {
     @Id
     private String id;
-    private String type;
+    private String type; // "flood" or "blocked_road"
     private String description;
     private double latitude;
     private double longitude;
@@ -18,6 +18,7 @@ public class FloodReport {
 
     public FloodReport() {}
 
+    //constructeurs
    public FloodReport(String type, String description, double latitude, double longitude, Date timestamp, String deviceId,String severity) {
         this.type = type;
         this.description = description;
@@ -28,6 +29,7 @@ public class FloodReport {
         this.severity = severity ;
     }
 
+    // Getters and Setters
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
 
