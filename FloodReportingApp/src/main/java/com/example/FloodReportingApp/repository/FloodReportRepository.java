@@ -9,4 +9,5 @@ import java.util.List;
 public interface FloodReportRepository extends MongoRepository<FloodReport, String>{
     List<FloodReport> findByDeviceId(String deviceId);
     List<FloodReport> findByType(String type);
+    List<FloodReport> findBySeverity(String severity);
 }
