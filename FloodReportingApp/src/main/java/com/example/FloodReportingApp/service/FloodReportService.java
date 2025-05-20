@@ -16,24 +16,30 @@ public class FloodReportService {
     @Autowired
     private FloodReportRepository reportRepository;
     
-    public FloodReport createReport(FloodReport report) {
-      report.setTimestamp(new Date());
-     return reportRepository.save(report);
-     }
+     //Créer un nouveau rapport
+    public FloodReport createReport(FloodReportDTO reportDTO) {
+        FloodReport report = new FloodReport(
+                reportDTO.getType(),
+                reportDTO.getDescription(),
+                reportDTO.getLatitude(),
+                reportDTO.getLongitude(),
+                new Date(),
+                reportDTO.getDeviceId(),
+                reportDTO.getSeverity()
+        );
+        return reportRepository.save(report);
+    }
 
+     // Récupérer tous les rapports
     public List<FloodReportDTO> getAllReports() {
       List<FloodReportDTO> reportDTOList = new ArrayList<>();
       reportRepository.findAll().forEach(report -> {
         reportDTOList.add(convertToDTO(report));
-
       });
       return reportDTOList;
     } 
 
-    public List<FloodReport> getReportsByDeviceId(String deviceId) {
-      return reportRepository.findByDeviceId(deviceId);
-    }
-
+    // Récupérer les rapports par severity
     public List<FloodReportDTO> getReportsBySeverity(String severity) {
       List<FloodReportDTO> reportDTOList = new ArrayList<>();
       reportRepository.findBySeverity(severity).forEach(report -> {
@@ -42,29 +48,19 @@ public class FloodReportService {
       return reportDTOList;
     }
 
-  public FloodReport createReport(FloodReportDTO reportDTO) {
-    FloodReport report = new FloodReport();
-    report.setType(reportDTO.getType());
-    report.setDescription(reportDTO.getDescription());
-    report.setLatitude(reportDTO.getLatitude());
-    report.setLongitude(reportDTO.getLongitude());
-    report.setTimestamp(new Date());
-    report.setDeviceId(reportDTO.getDeviceId());
-    report.setSeverity(reportDTO.getSeverity());
-    
-    return reportRepository.save(report);
-  }
-
-  private FloodReportDTO convertToDTO(FloodReport report) {
-    FloodReportDTO dto = new FloodReportDTO();
-    dto.setId(report.getId());
-    dto.setType(report.getType());
-    dto.setDescription(report.getDescription());
-    dto.setLatitude(report.getLatitude());
-    dto.setLongitude(report.getLongitude());
-    dto.setTimestamp(report.getTimestamp());
-    dto.setDeviceId(report.getDeviceId());
-    dto.setSeverity(report.getSeverity());
-    return dto;
-  }
+    /**
+     * Conversion d'un FloodReport en FloodReportDTO.
+     */
+    private FloodReportDTO convertToDTO(FloodReport report) {
+        return new FloodReportDTO(
+                report.getId(),
+                report.getType(),
+                report.getDescription(),
+                report.getLatitude(),
+                report.getLongitude(),
+                report.getTimestamp(),
+                report.getDeviceId(),
+                report.getSeverity()
+        );
+    }
 }
