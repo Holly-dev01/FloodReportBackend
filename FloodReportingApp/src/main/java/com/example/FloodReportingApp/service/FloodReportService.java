@@ -25,6 +25,7 @@ public class FloodReportService {
       List<FloodReportDTO> reportDTOList = new ArrayList<>();
       reportRepository.findAll().forEach(report -> {
         reportDTOList.add(convertToDTO(report));
+
       });
       return reportDTOList;
     } 
@@ -54,6 +55,7 @@ public class FloodReportService {
     dto.setLongitude(report.getLongitude());
     dto.setTimestamp(report.getTimestamp());
     dto.setDeviceId(report.getDeviceId());
+    dto.setSeverity(report.getSeverity());
     return dto;
   }
 }
